@@ -28,6 +28,12 @@ config.input = {}
 config.input.path = 'src'
 # Main index file
 config.input.jade = "#{config.input.path}/index.jade"
+
+# Service worker file
+ config.input.serviceWorker = {}
+ config.input.serviceWorker.enabled = true
+ config.input.serviceWorker.patterns = ["#{config.input.path}/service-worker.coffee"]
+
 # Where to find templates
 config.input.template = [
   "#{config.input.path}/*.jade"
@@ -37,7 +43,10 @@ config.input.template = [
 config.input.coffee = [
   "#{config.input.path}/*.coffee"
   "#{config.input.path}/**/*.coffee"
+  "!#{config.input.path}/service-worker.coffee"
 ]
+
+config.output.serviceWorker = 'service-worker.js'
 
 # Where to find less file(s)
 config.input.less = {}

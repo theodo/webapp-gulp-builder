@@ -11,6 +11,10 @@ module.exports = (gulp, config) ->
     'compile:vendor'
   ]
 
+  if config.input?.serviceWorker?.enabled
+    require('./service-worker.coffee') gulp, config
+    tasks.push 'compile:serviceWorker'
+
   if config.input?.less?.enabled
     require('./less.coffee') gulp, config
     tasks.push 'compile:less'
